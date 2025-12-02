@@ -1,0 +1,15 @@
+numpy
+pandas
+scipy
+wfdb
+nolds
+xgboost==3.0.3
+scikit-learn
+joblib
+tqdm
+shap
+matplotlib
+antropy
+imbalanced-learn
+tensorflow
+seaborn
