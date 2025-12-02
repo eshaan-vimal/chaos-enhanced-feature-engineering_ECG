@@ -1,8 +1,5 @@
 # Chaos-Enhanced Feature Engineering: A Data-Centric Framework for Efficient Time-Series Classification
 
-[![Python 3.10](https://img.shields.io/badge/Python-3.10-blue.svg)](https://www.python.org/downloads/)
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-
 > **Thesis:** Complex neural networks are unnecessary for chaotic time-series classification. By "unfolding" signals into their phase-space representation and extracting physics-informed features, **any lightweight classifier** can match or outperform Deep Learning while being orders of magnitude faster.
 
 ---
@@ -16,7 +13,7 @@
 | **Proposed Framework** | **SVM (RBF)** | **95.25%** | **0.87** | **~250 ms** |
 | **Proposed Framework** | **XGBoost** | **97.47%** | **0.93** | **~10 ms** |
 
-**The Insight:** Both SVM and XGBoost—when given our chaos-enhanced features—surpass the Deep Learning benchmark. The performance gain comes from **better data representation**, not model complexity. Any classical classifier benefits; XGBoost simply extracts the most from the feature space.
+**The Insight:** Both SVM and XGBoost when given our chaos-enhanced features surpass the Deep Learning benchmark. The performance gain comes from **better data representation**, not model complexity. Any classical classifier benefits; XGBoost simply extracts the most from the feature space.
 
 ---
 
@@ -24,7 +21,7 @@
 
 The prevailing paradigm in time-series classification relies on high-complexity Deep Learning architectures to approximate non-linear decision boundaries. While effective, these models incur substantial computational cost and interpretability issues.
 
-This work proposes a **Data-Centric** alternative rooted in **Nonlinear Dynamics (Chaos Theory)**. We argue that the perceived complexity of chaotic time-series is due to low-dimensional projection. Through **Phase Space Reconstruction** and the extraction of dynamical invariants—Largest Lyapunov Exponent, Higuchi Fractal Dimension, and Recurrence Quantification Analysis metrics—we "unfold" the data manifold into a structured, low-dimensional space.
+This work proposes a **Data-Centric** alternative rooted in **Nonlinear Dynamics (Chaos Theory)**. We argue that the perceived complexity of chaotic time-series is due to low-dimensional projection. Through **Phase Space Reconstruction** and the extraction of dynamical invariants Largest Lyapunov Exponent, Higuchi Fractal Dimension, and Recurrence Quantification Analysis metrics we "unfold" the data manifold into a structured, low-dimensional space.
 
 Unlike blind dimensionality reduction (PCA, Autoencoders), this transformation performs **Semantic Compression**: converting 2000-point ECG windows into interpretable 10-dimensional feature vectors that preserve underlying system dynamics. This representation enables **any lightweight, interpretable model** to match or outperform Deep Learning, offering a scalable path for high-performance AI on resource-constrained edge devices.
 
@@ -36,12 +33,12 @@ Unlike blind dimensionality reduction (PCA, Autoencoders), this transformation p
   <img src="models/final_charts/reconstruction_diagram.png" alt="Phase Space Reconstruction" width="700"/>
 </p>
 
-**The Insight:** A chaotic 1D signal isn't random—it's a *projection* of a deterministic system operating on a lower-dimensional manifold. By reconstructing the phase space using Takens' Embedding Theorem, we can "unfold" this tangled trajectory into a geometric **attractor** where:
+**The Insight:** A chaotic 1D signal isn't random it's a *projection* of a deterministic system operating on a lower-dimensional manifold. By reconstructing the phase space using Takens' Embedding Theorem, we can "unfold" this tangled trajectory into a geometric **attractor** where:
 
 - **Normal Sinus Rhythm** → Stable, periodic attractor
 - **Ventricular Ectopic Beat** → Chaotic, divergent attractor
 
-The classification problem transforms from learning complex patterns in high-dimensional signal space to separating *geometrically distinct regions* on the manifold—a task achievable by simple classifiers.
+The classification problem transforms from learning complex patterns in high-dimensional signal space to separating *geometrically distinct regions* on the manifold a task achievable by simple classifiers.
 
 ---
 
@@ -124,7 +121,7 @@ This strategy is motivated by the **"Edge of Chaos"** hypothesis from nonlinear 
 - **Statistical Features** → Capture the *periodic/ordered* component (the "clock")
 - **Chaos Features** → Capture the *complexity/disordered* component (the "adaptability")
 
-Together, they map the signal onto the full Order-Disorder spectrum, detecting pathologies at either extreme—excessive regularity (heart failure) or excessive stochasticity (fibrillation).
+Together, they map the signal onto the full Order-Disorder spectrum, detecting pathologies at either extreme excessive regularity (heart failure) or excessive stochasticity (fibrillation).
 
 ---
 
@@ -154,7 +151,7 @@ The progression across classifiers on our chaos-enhanced features reveals the **
 | SVM (RBF) | 95.2% | Feature space has **smooth geometric structure** (kernel methods resolve it) |
 | XGBoost | 97.5% | **Hierarchical decision rules** best capture feature interactions |
 
-**Key Finding:** Even the SVM—a decades-old algorithm—beats the modern CNN when given the right features. The XGBoost result (97.47%) represents the ceiling of what classical models can extract, but **the framework's value is model-agnostic**.
+**Key Finding:** Even the SVM a decades-old algorithm beats the modern CNN when given the right features. The XGBoost result (97.47%) represents the ceiling of what classical models can extract, but **the framework's value is model-agnostic**.
 
 ### Efficiency Analysis
 
@@ -164,7 +161,7 @@ The progression across classifiers on our chaos-enhanced features reveals the **
 
 | Model | Inference Latency | Latency Reduction vs CNN |
 |-------|-------------------|--------------------------|
-| 1D-CNN | ~1500 ms | — |
+| 1D-CNN | ~1500 ms |   |
 | SVM (RBF) | ~250 ms | 83% |
 | Random Forest | ~20 ms | 98.7% |
 | XGBoost | ~10 ms | 99.3% |
@@ -181,13 +178,13 @@ All proposed-track models operate in the **Real-Time Zone** (<100ms), enabling d
 
 ### Key Insights
 
-1. **Dominance of Timing (`Pre_RR`):** The interval preceding a beat is the strongest predictor—low values (premature beats) push strongly toward anomaly classification.
+1. **Dominance of Timing (`Pre_RR`):** The interval preceding a beat is the strongest predictor low values (premature beats) push strongly toward anomaly classification.
 
 2. **Validation of Chaos Theory:** `FD` (Fractal Dimension) and `SampEn` rank among top predictors. Low complexity (blue dots for FD) drives SHAP values to +6.0, corresponding to **99.7% anomaly probability**. This confirms that *loss of signal complexity* is a definitive diagnostic marker.
 
 3. **Structural Confirmation:** `RR` (Recurrence Rate) significance proves the model leverages phase-space attractor density, not just simple statistics.
 
-**Why This Matters:** Unlike CNN feature maps, every dimension in our feature space has a **physiological interpretation**—bridging the gap between algorithmic output and clinical reasoning.
+**Why This Matters:** Unlike CNN feature maps, every dimension in our feature space has a **physiological interpretation** bridging the gap between algorithmic output and clinical reasoning.
 
 ---
 
@@ -274,13 +271,13 @@ pip install -r requirements.txt
 ```
 
 **Key Dependencies:**
-- `wfdb` — MIT-BIH database parsing
-- `scipy` — Signal filtering
-- `nolds` — Lyapunov exponent calculation
-- `antropy` — Fractal dimension, entropy (Numba-accelerated)
-- `pyrqa` — Recurrence quantification analysis
-- `xgboost`, `scikit-learn` — ML models
-- `shap` — Explainability
+- `wfdb`   MIT-BIH database parsing
+- `scipy`   Signal filtering
+- `nolds`   Lyapunov exponent calculation
+- `antropy`   Fractal dimension, entropy (Numba-accelerated)
+- `pyrqa`   Recurrence quantification analysis
+- `xgboost`, `scikit-learn`   ML models
+- `shap`   Explainability
 
 ### Replication
 
@@ -322,20 +319,6 @@ python scripts/reconstruction_comparison.py
 - **Multi-class Extension:** Differentiating specific arrhythmia types (PVC, PAC, LBBB, RBBB)
 - **Domain Transfer:** Structural health monitoring, predictive maintenance, financial regime detection
 - **Online Learning:** Patient-specific model calibration
-
----
-
-## Citation
-
-If you use this work, please cite:
-```bibtex
-@thesis{eshaanvimal2025chaos,
-  title={Chaos-Enhanced Feature Engineering: A Data-Centric Framework for Efficient Time-Series Classification},
-  author={Eshaan Vimal},
-  year={2025},
-  type={Bachelor's Thesis}
-}
-```
 
 ---
 
